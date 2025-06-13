@@ -109,6 +109,22 @@ Open Deep Research is compatible with many different LLMs:
 pip install open-deep-research
 ```
 
+### Run as a service
+
+Start a FastAPI server that exposes the graph workflow over HTTP:
+
+```bash
+uvicorn open_deep_research.service:app --host 0.0.0.0 --port 8000
+```
+
+You can then POST a topic to `/research` using Postman or `curl`:
+
+```bash
+curl -X POST -H "Content-Type: application/json" \
+     -d '{"topic": "Your research topic"}' \
+     http://localhost:8000/research
+```
+
 See [src/open_deep_research/graph.ipynb](src/open_deep_research/graph.ipynb) and [src/open_deep_research/multi_agent.ipynb](src/open_deep_research/multi_agent.ipynb) for example usage in a Jupyter notebook:
 
 ## Open Deep Research Implementations
