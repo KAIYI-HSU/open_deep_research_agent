@@ -30,8 +30,12 @@ dependencies = [
     "langchain_tavily",
     "pytest",
     "httpx>=0.24.0",
-    "markdownify>=0.11.6"
+    "markdownify>=0.11.6",
+    "watchdog>=4.0.1"
 ]
+
+[project.scripts]
+paper_renamer = "open_deep_research.paper_renamer.cli:main"
 
 [project.optional-dependencies]
 dev = ["mypy>=1.11.1", "ruff>=0.6.1"]
@@ -41,7 +45,13 @@ requires = ["setuptools>=73.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
-packages = ["open_deep_research"]
+packages = [
+    "open_deep_research",
+    "open_deep_research.paper_renamer",
+    "open_deep_research.paper_renamer.extractor",
+    "open_deep_research.paper_renamer.llm",
+    "open_deep_research.paper_renamer.renamer",
+]
 
 [tool.setuptools.package-dir]
 "open_deep_research" = "src/open_deep_research"
